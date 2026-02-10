@@ -1,4 +1,5 @@
-import { sign, verify } from 'jsonwebtoken';
+import pkg from 'jsonwebtoken';
+const { sign, verify } = pkg;
 
 export function generateToken(id, role) {
     return sign({ id, role }, process.env.JWT_SECRET, {

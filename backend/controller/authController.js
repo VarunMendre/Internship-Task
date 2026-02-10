@@ -41,5 +41,5 @@ export const login = asyncHandler(async (req, res, next) => {
 // @route   POST /api/v1/auth/logout
 // @access  Private
 export const logout = asyncHandler(async (req, res, next) => {
-    // Placeholder
+    successResponse(res, null, 200, 'User logged out successfully');
 });
