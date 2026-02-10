@@ -4,5 +4,5 @@
  */
 
 // Placeholder for auth logic
-exports.login = async (email, password, role) => { };
-exports.signup = async (userData) => { };
+export const login = async (email, password, role) => {};
+export const signup = async (userData) => {};

@@ -1,30 +1,17 @@
-const Joi = require('joi');
+import { z } from 'zod';
+import { REGEX } from '../utils/regexPatterns.js';
 
-exports.validateSignup = (data) => {
-  const schema = Joi.object({
-    name: Joi.string().min(20).max(60).required().messages({
-      'string.min': 'Name must be at least 20 characters long',
-      'string.max': 'Name cannot exceed 60 characters'
-    }),
-    email: Joi.string().email().required(),
-    address: Joi.string().max(400).required(),
-    password: Joi.string()
-      .min(8)
-      .max(16)
-      .pattern(new RegExp('^(?=.*[A-Z])(?=.*[!@#$%^&*])'))
-      .required()
-      .messages({
-        'string.pattern.base': 'Password must include at least one uppercase letter and one special character'
-      })
-  });
-  return schema.validate(data);
-};
+// Signup Schema
+export const signupSchema = z.object({
+  name: z.string().regex(REGEX.NAME, 'Name must be 20-60 characters'),
+  email: z.string().regex(REGEX.EMAIL, 'Invalid email format'),
+  address: z.string().regex(REGEX.ADDRESS, 'Address must not exceed 400 characters'),
+  password: z.string().regex(REGEX.PASSWORD, 'Password must be 8-16 chars with 1 Uppercase & 1 Special char')
+});
 
-exports.validateLogin = (data) => {
-  const schema = Joi.object({
-    email: Joi.string().email().required(),
-    password: Joi.string().required(),
-    role: Joi.string().valid('ADMIN', 'USER', 'STORE_OWNER').required()
-  });
-  return schema.validate(data);
-};
+// Login Schema
+export const loginSchema = z.object({
+  email: z.string().regex(REGEX.EMAIL, 'Invalid email format'),
+  password: z.string().min(1, 'Password is required'),
+  role: z.enum(['ADMIN', 'USER', 'STORE_OWNER'])
+});

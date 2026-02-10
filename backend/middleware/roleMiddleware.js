@@ -1,4 +1,4 @@
-const ErrorResponse = require('../utils/ErrorResponse');
+import ErrorResponse from '../utils/ErrorResponse.js';
 
 /**
  * Middleware to restrict access based on user roles
@@ -18,4 +18,4 @@ const authorize = (...roles) => {
     };
 };
 
-module.exports = authorize;
+export default authorize;

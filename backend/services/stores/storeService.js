@@ -4,6 +4,6 @@
  */
 
 // Placeholder for store logic
-exports.createStore = async (data) => { };
-exports.getStores = async (filters) => { };
-exports.getStoreById = async (id) => { };
+export const createStore = async (data) => {};
+export const getStores = async (filters) => {};
+export const getStoreById = async (id) => {};

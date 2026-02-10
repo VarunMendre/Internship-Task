@@ -4,6 +4,6 @@
  */
 
 // Placeholder for rating logic
-exports.submitRating = async (userId, data) => {};
-exports.getStoreRatings = async (storeId) => {};
-exports.updateStoreAverage = async (storeId) => {};
+export const submitRating = async (userId, data) => {};
+export const getStoreRatings = async (storeId) => {};
+export const updateStoreAverage = async (storeId) => {};
